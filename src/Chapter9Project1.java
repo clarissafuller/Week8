@@ -7,18 +7,55 @@ Goal:
   - constructor with width & height
   - method getArea(): width * height
   - method getPerimeter(): 2 * (width + height)
+ */
 
-Main / test requirements:
-- Create 2 Rectangle objects:
-  1) width=4, height=40
-  2) width=3.5, height=35.9
-- Display, in this order for each rectangle:
-  width, height, area, perimeter
-- Output can be multiple lines; just keep the order correct.
+public class Chapter9Project1 {
+    public static void main(String[] args) {
+        // Create two Rectangle objects
+        Rectangle r1 = new Rectangle(4, 40);
+        Rectangle r2 = new Rectangle(3.5, 35.9);
 
-Implementation steps:
-1) Create Rectangle class skeleton (fields + constructors)
-2) Add getArea() and getPerimeter()
-3) In Exercise.main, instantiate the two rectangles
-4) Print required values in order for each rectangle
-*/
+        // Display width, height, area, perimeter (in this order) for each
+        System.out.println("Rectangle 1");
+        System.out.println("width: " + r1.width);
+        System.out.println("height: " + r1.height);
+        System.out.println("area: " + r1.getArea());
+        System.out.println("perimeter: " + r1.getPerimeter());
+
+        System.out.println();
+
+        System.out.println("Rectangle 2");
+        System.out.println("width: " + r2.width);
+        System.out.println("height: " + r2.height);
+        System.out.println("area: " + r2.getArea());
+        System.out.println("perimeter: " + r2.getPerimeter());
+    }
+}
+
+class Rectangle {
+    // Two double data fields
+    double width;
+    double height;
+
+    // No-arg constructor: default width=1, height=2
+    Rectangle() {
+        width = 1;
+        height = 2;
+    }
+
+    // Constructor with specified width and height
+    Rectangle(double newWidth, double newHeight) {
+        width = newWidth;
+        height = newHeight;
+    }
+
+    // Returns area
+    double getArea() {
+        return width * height;
+    }
+
+    // Returns perimeter
+    double getPerimeter() {
+        return 2 * (width + height);
+    }
+}
