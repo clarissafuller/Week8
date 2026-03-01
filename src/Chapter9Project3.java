@@ -13,24 +13,60 @@ Goal:
     - maxValue
     - row index (x)
     - column index (y)
-
-Implementation Plan:
-1) In main:
-   - Read rows & columns
-   - Create double[][] array
-   - Fill array
-   - Call locateLargest()
-   - Print result in required format
-
-2) In locateLargest():
-   - Initialize maxValue to a[0][0]
-   - Track row (x) and column (y)
-   - Traverse array with nested loops
-   - Update only if strictly greater
-     (this automatically preserves smallest row/col in ties)
-
-3) Create Location class with:
-   - double maxValue
-   - int x
-   - int y
 */
+import java.util.Scanner;
+
+public class Chapter9Project3 {
+    public static void main(String[] args) {
+        Scanner input = new Scanner(System.in);
+
+        System.out.print("Enter the number of rows and columns of the array: ");
+        int rows = input.nextInt();
+        int cols = input.nextInt();
+
+        double[][] array = new double[rows][cols];
+
+        System.out.println("Enter the array:");
+        for (int i = 0; i < rows; i++) {
+            for (int j = 0; j < cols; j++) {
+                array[i][j] = input.nextDouble();
+            }
+        }
+
+        Location result = locateLargest(array);
+
+        System.out.println("The largest element is " + result.maxValue +
+                ", located at (" + result.x + "," + result.y + ")");
+    }
+
+    public static Location locateLargest(double[][] a) {
+
+        double m = a[0][0];
+        int x = 0;
+        int y = 0;
+
+        for (int i = 0; i < a.length; i++) {
+            for (int j = 0; j < a[i].length; j++) {
+
+                if (a[i][j] > m) {
+                    m = a[i][j];
+                    x = i;
+                    y = j;
+                }
+            }
+        }
+
+        Location location = new Location();
+        location.maxValue = m;
+        location.x = x;
+        location.y = y;
+
+        return location;
+    }
+}
+
+class Location {
+    double maxValue;
+    int x;
+    int y;
+}
